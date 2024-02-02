@@ -11,7 +11,7 @@
     "prettier": "prettier --write .",
     "prepare": "husky",
     "checkFormat": "prettier --check .",
-		"lint": "eslint ."
+    "lint": "eslint ."
   },
   "husky": {
     "hooks": {
