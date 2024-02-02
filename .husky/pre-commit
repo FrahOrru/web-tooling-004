@@ -1,0 +1,2 @@
+npm run checkFormat
+npm run lint
