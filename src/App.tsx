@@ -1,14 +1,46 @@
 import { useState } from 'react'
 import './App.css'
-import React from 'react'
+import { useEffect } from 'react'
 
 function App() {
   const [count, setCount] = useState(0)
 
+  useEffect(() => {
+    const buttonElement = document.getElementById('movingButton')
+    const cardElement = document.querySelector('.card')
+
+    const moveButtonRandomly = () => {
+      const cardWidth = cardElement!.clientWidth
+      const cardHeight = cardElement!.clientHeight
+
+      const buttonWidth = buttonElement!.offsetWidth
+      const buttonHeight = buttonElement!.offsetHeight
+
+      const maxX = cardWidth - buttonWidth
+      const maxY = cardHeight - buttonHeight
+
+      const randomX = Math.floor(Math.random() * maxX)
+      const randomY = Math.floor(Math.random() * maxY)
+
+      buttonElement!.style.left = `${randomX}px`
+      buttonElement!.style.top = `${randomY}px`
+    }
+
+    buttonElement!.addEventListener('click', moveButtonRandomly)
+
+    return () => {
+      buttonElement!.removeEventListener('click', moveButtonRandomly)
+    }
+  }, [])
+
   return (
     <div>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <h1>Follow The counter</h1>
+        <button
+          id="movingButton"
+          onClick={() => setCount((count) => count + 1)}
+        >
           count is {count}
         </button>
       </div>

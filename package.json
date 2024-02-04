@@ -13,11 +13,6 @@
     "checkFormat": "prettier --check .",
     "lint": "eslint ."
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run format"
-    }
-  },
   "dependencies": {
     "jest-environment-jsdom": "^29.7.0",
     "react": "^18.2.0",
