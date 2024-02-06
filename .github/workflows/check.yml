@@ -1,0 +1,15 @@
+name: check-if-every-thing-is-ok
+run-name: checks
+on: [push]
+jobs:
+  run-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install
+      - run: npm run checkFormat
+      - run: npm run lint
+      - run: npm run test

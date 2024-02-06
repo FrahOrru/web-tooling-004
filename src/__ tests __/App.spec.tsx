@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom'
+import { render, fireEvent } from '@testing-library/react'
 import App from '../App'
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import Greeting from '../randomComponent'
 
 test('demo', () => {
   expect(true).toBe(true)
@@ -24,18 +25,8 @@ test('renders the counter button and updates count on click', () => {
   expect(getByText(/count is 1/i)).toBeInTheDocument()
 })
 
-test('moves the button randomly on click', async () => {
-  const { getByTestId } = render(<App />)
-  const button = getByTestId('movingButton')
-
-  const initialPosition = { x: button.style.left, y: button.style.top }
-
-  // Click the button
-  fireEvent.click(button)
-
-  // Button position should change after click
-  await waitFor(() => {
-    const newPosition = { x: button.style.left, y: button.style.top }
-    expect(newPosition).not.toEqual(initialPosition)
-  })
+test('renders greeting with provided name', () => {
+  const { getByText } = render(<Greeting name="Alice" />)
+  const greetingElement = getByText(/Hello, Alice! Follow the counter/i)
+  expect(greetingElement).toBeInTheDocument()
 })

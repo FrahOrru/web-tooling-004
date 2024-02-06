@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { useEffect } from 'react'
+import Greeting from './randomComponent'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -36,7 +37,7 @@ function App() {
   return (
     <div>
       <div className="card">
-        <h1>Follow The counter</h1>
+        <Greeting name="frah"></Greeting>
         <button
           id="movingButton"
           data-testid="movingButton"
