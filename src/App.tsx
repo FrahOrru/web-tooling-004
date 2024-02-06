@@ -39,6 +39,7 @@ function App() {
         <h1>Follow The counter</h1>
         <button
           id="movingButton"
+          data-testid="movingButton"
           onClick={() => setCount((count) => count + 1)}
         >
           count is {count}
